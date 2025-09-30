@@ -1,4 +1,4 @@
-🎮 Sobre o jogo
+# 🎮 Sobre o jogo
 
 Neste jogo da memória, você precisa encontrar pares de cartas combinando imagens. Mas nada aqui é comum. As artes, sons e ambiente foram inspirados em brainrot culture, glitch art, e vibes de internet esquecida.
 
@@ -12,7 +12,7 @@ Animações que brincam com sua percepção
 
 Um clima que faz você se perguntar: "por que estou jogando isso mesmo?"
 
-🧩 Funcionalidades
+# 🧩 Funcionalidades
 
 Modo clássico de jogo da memória (pares)
 
@@ -26,7 +26,7 @@ Som ambiente opcional
 
 Efeitos visuais que “afetam” a interface
 
-🛠️ Tecnologias usadas
+# 🛠️ Tecnologias usadas
 
 HTML5
 
