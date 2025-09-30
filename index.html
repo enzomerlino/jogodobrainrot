@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roube um Brainrot!</title>
+    <link rel="shortcut icon" href="/img/" type="image/x-icon">
+    <link rel="stylesheet" href="https://enzomerlino.github.io/jogodobrainrot/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Roube um Brainrot!</h1>
+            <p class="subtitle">Jogo da memória.</p>
+        </div>
+
+        <div class="form-container">
+            <div class="form-group">
+                <button id="startButton" class="start-button">
+                    Iniciar Jogo
+                </button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Preencha os campos acima para começar o jogo!</p>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="https://enzomerlino.github.io/jogodobrainrot/js/script.js"></script>
+<script>
+    document.getElementById('startButton').addEventListener('click', function () {
+        window.location.href = "https://enzomerlino.github.io/jogodobrainrot/jogo.html";
+    });
+</script>
