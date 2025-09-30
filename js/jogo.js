@@ -2,15 +2,15 @@ const TIME_LIMIT = 60;
 
 // IMAGES — catálogo de cartas (cada item vira um par)
 const IMAGES = [
-    { key: 'BallerinaCapuccina', src: '../img/BallerinaCapuccina.png', alt: 'Ballerina Capuccina', sound: '../audio/BallerinaCapuccina.mpeg' },
-    { key: 'BrrBrrPatapim', src: '../img/BrrBrrPatapim.png', alt: 'Brr Brr Patapim', sound: '../audio/BrrBrrPatapim.mp3' },
-    { key: 'CappuccinoAssassino', src: '../img/CappuccinoAssassino.png', alt: 'Cappuccino Assassino', sound: '../audio/CappuccinoAssassino.mp3' },
-    { key: 'ChimpanziniBananini', src: '../img/ChimpanziniBananini.png', alt: 'Chimpanzini Bananini', sound: '../audio/ChimpanziniBananini.mp3' },
-    { key: 'EspressoSignora', src: '../img/EspressoSignora.png', alt: 'Espresso Signora', sound: '../audio/EspressoSignora.mp3' },
-    { key: 'LiliriLalira', src: '../img/LiliriLalira.png', alt: 'Liliri Lalira', sound: '../audio/Lirililarila.mp3' },
-    { key: 'TralaleroTralala', src: '../img/TralaleroTralala.png', alt: 'Tralalero Tralala', sound: '../audio/TralaleroTralala.mp3' },
-    { key: 'TungTungSahur', src: '../img/TungTungSahur.png', alt: 'Tung Tung Sahur', sound: '../audio/TungTungSahur.mp3' },
-    { key: 'OdinDinDun', src: '../img/OdinDinDun.png', alt: 'Odin Din Dun', sound: '../audio/OdinDinDun.mp3' }
+    { key: 'BallerinaCapuccina', src: 'https://enzomerlino.github.io/jogodobrainrot/img/BallerinaCapuccina.png', alt: 'Ballerina Capuccina' },
+    { key: 'BrrBrrPatapim', src: 'https://enzomerlino.github.io/jogodobrainrot/img/BrrBrrPatapim.png', alt: 'Brr Brr Patapim' },
+    { key: 'CappuccinoAssassino', src: 'https://enzomerlino.github.io/jogodobrainrot/img/CappuccinoAssassino.png', alt: 'Cappuccino Assassino' },
+    { key: 'ChimpanziniBananini', src: 'https://enzomerlino.github.io/jogodobrainrot/img/ChimpanziniBananini.png', alt: 'Chimpanzini Bananini' },
+    { key: 'EspressoSignora', src: 'https://enzomerlino.github.io/jogodobrainrot/img/EspressoSignora.png', alt: 'Espresso Signora' },
+    { key: 'LiliriLalira', src: 'https://enzomerlino.github.io/jogodobrainrot/img/LiliriLalira.png', alt: 'Liliri Lalira' },
+    { key: 'TralaleroTralala', src: 'https://enzomerlino.github.io/jogodobrainrot/img/TralaleroTralala.png', alt: 'Tralalero Tralala' },
+    { key: 'TungTungSahur', src: 'https://enzomerlino.github.io/jogodobrainrot/img/TungTungSahur.png', alt: 'Tung Tung Sahur' },
+    { key: 'OdinDinDun', src: 'https://enzomerlino.github.io/jogodobrainrot/img/OdinDinDun.png', alt: 'Odin Din Dun' }
 ];
 
 // Referências de DOM
@@ -121,20 +121,11 @@ function onFlip(card) {
     if (state.lock || state.gameOver) return;
 
     const inner = card.querySelector('.inner');
-    const angle = (gsap.getProperty(inner, 'rotateY') + 360) % 360;
+    const angle = (gsap.getProperty(inner, 'rotateY') + 360) % 360; // 0=frente, 180=verso
     const isFaceUp = (angle < 90 || angle > 270);
 
     if (!isFaceUp) {
         flipUp(card);
-
-        // 🔊 Toca o som da carta
-        const symbol = card.dataset.symbol;
-        const imgData = IMAGES.find(item => item.key === symbol);
-        if (imgData && imgData.sound) {
-            const audio = new Audio(imgData.sound);
-            audio.play().catch(err => console.log("Erro ao reproduzir som:", err));
-        }
-
         if (!state.first) {
             state.first = card;
         } else {
@@ -148,7 +139,7 @@ function onFlip(card) {
                 if (match) {
                     celebrateMatch([state.first, card]);
                     state.pairsLeft--;
-                    if (liveEl) {
+                    if (liveEl) { // proteção: só escreve se o elemento existir
                         liveEl.textContent = `Acertou um par de ${card.dataset.label}. Restam ${state.pairsLeft} pares.`;
                     }
                     if (state.pairsLeft === 0) {
